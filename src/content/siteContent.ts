@@ -34,6 +34,8 @@ export const siteMeta = {
   github: 'https://github.com/ulas312',
   linkedin: 'https://www.linkedin.com/in/ulastemel/',
   location: 'Based in the UK.',
+  /** Set true to show the Formbold contact form below the social buttons */
+  showEmailForm: false,
 };
 
 export const navLinks: NavLink[] = [
@@ -44,6 +46,9 @@ export const navLinks: NavLink[] = [
 ];
 
 export const hero = {
+  title: 'QA-minded Product Builder',
+  tagline:
+    'I build useful web tools with a focus on quality, testing, and real-world problem solving.',
   headline:
     'Hi, I’m Ulas — I build useful web tools with a strong focus on quality, testing, and real-world problem solving.',
   subheading:
@@ -66,6 +71,7 @@ export const hero = {
 };
 
 export const about = {
+  title: 'Hi, I’m Ulas. Nice to meet you.',
   paragraphs: [
     'I originally came into software through web development, but my strongest experience has been in QA automation and building reliable user flows. That background has shaped how I build products: I care about edge cases, usability, testing, and whether something actually works for real people.',
     'Outside of work, I enjoy building my own product ideas — from browser tools like Winly to mobile app experiments and small business-focused SaaS ideas. I’m interested in practical software that solves real problems, not just portfolio projects.',
@@ -217,6 +223,37 @@ export const skillGroups: SkillGroup[] = [
 ];
 
 export const contact = {
-  title: 'Want to connect?',
-  copy: 'I’m always open to chatting about useful products, automation, QA, small business software, or interesting build ideas.',
+  title: 'Interested in collaborating?',
+  copy: 'I’m always open to discussing useful products, automation, QA, or interesting build ideas.',
+  cta: "Let's start a conversation",
 };
+
+export const pillars = [
+  {
+    title: 'Product Builder',
+    description:
+      'I turn practical problems into simple software — browser tools, experiments, and small-business ideas that people can actually use.',
+    enjoyLabel: 'Things I enjoy building:',
+    enjoy: ['Chrome extensions', 'Web apps', 'Mobile experiments', 'Automation workflows'],
+    toolsLabel: 'Stack & tools:',
+    tools: ['React', 'TypeScript', 'Node.js', 'Firebase', 'Chrome APIs'],
+  },
+  {
+    title: 'QA Automation',
+    description:
+      'My strongest experience is in test automation and reliable user flows. I think beyond the happy path before shipping.',
+    enjoyLabel: 'What I focus on:',
+    enjoy: ['E2E testing', 'Regression suites', 'Edge cases', 'Accessibility', 'Testability'],
+    toolsLabel: 'Testing tools:',
+    tools: ['Cypress', 'Detox', 'Jest', 'Mocha', 'CI pipelines'],
+  },
+  {
+    title: 'Frontend Developer',
+    description:
+      'I like shipping clean interfaces in the browser — readable code, thoughtful UX, and components that hold up in production.',
+    enjoyLabel: 'Languages & UI:',
+    enjoy: ['React', 'TypeScript', 'HTML & CSS', 'Material UI', 'Responsive layout'],
+    toolsLabel: 'Dev tools:',
+    tools: ['Git & GitHub', 'VS Code', 'REST APIs', 'Tailwind', 'Netlify'],
+  },
+];

@@ -1,5 +1,4 @@
 import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
 interface SectionHeadingProps {
@@ -11,23 +10,29 @@ interface SectionHeadingProps {
 export default function SectionHeading({
   title,
   subtitle,
-  align = 'left',
+  align = 'center',
 }: SectionHeadingProps) {
   return (
-    <Box sx={{ mb: { xs: 4, md: 5 }, textAlign: align }}>
-      <Typography variant="h2" component="h2" gutterBottom>
+    <Box
+      sx={{
+        mb: { xs: 4, md: 6 },
+        textAlign: align,
+        maxWidth: align === 'center' ? 640 : 'none',
+        mx: align === 'center' ? 'auto' : 0,
+      }}
+    >
+      <Typography
+        variant="h2"
+        component="h2"
+        sx={{ color: 'text.primary', mb: subtitle ? 1.5 : 0 }}
+      >
         {title}
       </Typography>
       {subtitle && (
-        <Typography
-          variant="body1"
-          color="text.secondary"
-          sx={{ maxWidth: align === 'center' ? 640 : 720, mx: align === 'center' ? 'auto' : 0 }}
-        >
+        <Typography variant="body1" sx={{ maxWidth: 520, mx: align === 'center' ? 'auto' : 0 }}>
           {subtitle}
         </Typography>
       )}
-      <Divider sx={{ mt: 3, maxWidth: 80 }} />
     </Box>
   );
 }

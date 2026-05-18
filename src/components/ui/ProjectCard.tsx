@@ -15,11 +15,11 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Card sx={{ height: '100%', ...cardSx }}>
+    <Card sx={{ ...cardSx, bgcolor: 'background.paper' }}>
       <CardContent sx={{ p: 0, '&:last-child': { pb: 0 } }}>
         <Stack spacing={2} sx={{ height: '100%' }}>
           <Stack direction="row" alignItems="center" justifyContent="space-between" gap={1}>
-            <Typography variant="h3" component="h3">
+            <Typography variant="h3" component="h3" sx={{ color: 'text.primary' }}>
               {project.name}
             </Typography>
             <StatusChip status={project.status} />

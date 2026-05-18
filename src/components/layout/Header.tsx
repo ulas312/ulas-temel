@@ -9,19 +9,13 @@ import MenuItem from '@mui/material/MenuItem';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import MenuIcon from '@mui/icons-material/Menu';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
-import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import { navLinks, siteMeta } from '../../content/siteContent';
 import { scrollToSection } from '../../utils/scrollToSection';
-import { useColorMode } from '../../theme/ColorModeContext';
+import { containerPx } from '../../theme/theme';
 
 export default function Header() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [elevated, setElevated] = useState(false);
-  const { mode, toggleColorMode } = useColorMode();
 
   useEffect(() => {
     const onScroll = () => setElevated(window.scrollY > 8);
@@ -37,31 +31,31 @@ export default function Header() {
   return (
     <AppBar
       position="sticky"
-      elevation={elevated ? 2 : 0}
+      elevation={0}
       sx={{
-        bgcolor: 'background.paper',
+        bgcolor: elevated ? 'background.paper' : 'transparent',
         color: 'text.primary',
-        borderBottom: elevated ? 0 : 1,
+        borderBottom: elevated ? 1 : 0,
         borderColor: 'divider',
+        transition: 'background-color 0.2s ease, border-color 0.2s ease',
       }}
     >
-      <Container maxWidth="lg">
-        <Toolbar disableGutters sx={{ minHeight: { xs: 56, md: 64 }, gap: 1 }}>
+      <Container maxWidth="md" sx={{ px: containerPx }}>
+        <Toolbar disableGutters sx={{ minHeight: { xs: 56, md: 72 }, gap: 2 }}>
           <Typography
             component="button"
-            variant="h4"
             onClick={() => scrollToSection('hero')}
             sx={{
-              flexGrow: { xs: 1, md: 0 },
-              mr: { md: 4 },
-              fontWeight: 700,
-              fontSize: { xs: '1.1rem', md: '1.25rem' },
+              flexGrow: 1,
+              fontWeight: 800,
+              fontSize: { xs: '1rem', md: '1.125rem' },
               border: 'none',
               background: 'none',
               cursor: 'pointer',
               color: 'text.primary',
               fontFamily: 'inherit',
               p: 0,
+              textAlign: 'left',
             }}
           >
             {siteMeta.name}
@@ -70,105 +64,47 @@ export default function Header() {
           <Stack
             direction="row"
             alignItems="center"
-            spacing={0.5}
-            sx={{ display: { xs: 'none', md: 'flex' }, flexGrow: 1 }}
+            spacing={1}
+            sx={{ display: { xs: 'none', md: 'flex' } }}
           >
             {navLinks.map((link) => (
               <Button
                 key={link.sectionId}
                 color="inherit"
                 onClick={() => handleNav(link.sectionId)}
+                sx={{ fontWeight: 600, color: 'text.secondary' }}
               >
                 {link.label}
               </Button>
             ))}
           </Stack>
 
-          <Stack direction="row" alignItems="center" spacing={0.25}>
-            <IconButton
-              href={siteMeta.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              color="inherit"
-              size="small"
-              sx={{ display: { xs: 'none', sm: 'inline-flex' } }}
-            >
-              <GitHubIcon />
-            </IconButton>
-            <IconButton
-              href={siteMeta.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              color="inherit"
-              size="small"
-              sx={{ display: { xs: 'none', sm: 'inline-flex' } }}
-            >
-              <LinkedInIcon />
-            </IconButton>
-            <IconButton
-              href={`mailto:${siteMeta.email}`}
-              aria-label="Email"
-              color="inherit"
-              size="small"
-              sx={{ display: { xs: 'none', sm: 'inline-flex' } }}
-            >
-              <EmailOutlinedIcon />
-            </IconButton>
-            <IconButton
-              onClick={toggleColorMode}
-              aria-label="Toggle dark mode"
-              color="inherit"
-              size="small"
-            >
-              {mode === 'light' ? (
-                <DarkModeOutlinedIcon />
-              ) : (
-                <LightModeOutlinedIcon />
-              )}
-            </IconButton>
-            <IconButton
-              sx={{ display: { md: 'none' } }}
-              aria-label="Open menu"
-              onClick={(e) => setAnchorEl(e.currentTarget)}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-          </Stack>
+          <Button
+            variant="contained"
+            onClick={() => scrollToSection('contact')}
+            sx={{ display: { xs: 'none', sm: 'inline-flex' } }}
+          >
+            Say Hello
+          </Button>
+
+          <IconButton
+            sx={{ display: { md: 'none' } }}
+            aria-label="Open menu"
+            onClick={(e) => setAnchorEl(e.currentTarget)}
+            color="inherit"
+          >
+            <MenuIcon />
+          </IconButton>
         </Toolbar>
       </Container>
 
-      <Menu
-        anchorEl={anchorEl}
-        open={Boolean(anchorEl)}
-        onClose={() => setAnchorEl(null)}
-      >
+      <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={() => setAnchorEl(null)}>
         {navLinks.map((link) => (
           <MenuItem key={link.sectionId} onClick={() => handleNav(link.sectionId)}>
             {link.label}
           </MenuItem>
         ))}
-        <MenuItem
-          component="a"
-          href={siteMeta.github}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </MenuItem>
-        <MenuItem
-          component="a"
-          href={siteMeta.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          LinkedIn
-        </MenuItem>
-        <MenuItem component="a" href={`mailto:${siteMeta.email}`}>
-          Email
-        </MenuItem>
+        <MenuItem onClick={() => handleNav('contact')}>Say Hello</MenuItem>
       </Menu>
     </AppBar>
   );
