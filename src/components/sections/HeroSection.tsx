@@ -7,6 +7,7 @@ import { hero } from '../../content/siteContent';
 import { scrollToSection } from '../../utils/scrollToSection';
 import Section from '../ui/Section';
 import profilePic from '../../assets/profile-pic.png';
+import { contentMaxWidth } from '../../theme/theme';
 
 export default function HeroSection() {
   return (
@@ -17,7 +18,7 @@ export default function HeroSection() {
         textAlign: 'center',
       }}
     >
-      <Stack spacing={3} alignItems="center" sx={{ maxWidth: 720, mx: 'auto' }}>
+      <Stack spacing={3} alignItems="center" sx={{ maxWidth: contentMaxWidth, mx: 'auto', width: '100%' }}>
         <Avatar
           src={profilePic}
           alt="Ulas Temel"

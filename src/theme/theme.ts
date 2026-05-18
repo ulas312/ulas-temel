@@ -125,6 +125,23 @@ export const sectionPy = { xs: 7, sm: 9, md: 11 };
 
 export const containerPx = { xs: 2.5, sm: 3 };
 
+/** Main page width — lg (~1200px) on desktop; full width on mobile */
+export const layoutMaxWidth = 'lg' as const;
+
+/** Readable text blocks scale up on large screens only */
+export const proseMaxWidth = {
+  xs: '100%',
+  md: 640,
+  lg: 820,
+  xl: 920,
+};
+
+export const contentMaxWidth = {
+  xs: '100%',
+  lg: 900,
+  xl: 1000,
+};
+
 export const sectionBand = {
   alt: (mode: ColorMode) =>
     mode === 'light' ? '#F8FAFC' : '#0F172A',

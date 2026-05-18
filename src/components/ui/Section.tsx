@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import { sectionPy, containerPx, sectionBand } from '../../theme/theme';
+import { sectionPy, containerPx, sectionBand, layoutMaxWidth } from '../../theme/theme';
 import { useColorMode } from '../../theme/ColorModeContext';
 
 interface SectionProps {
@@ -34,7 +34,7 @@ export default function Section({
       }}
     >
       <Container
-        maxWidth="md"
+        maxWidth={layoutMaxWidth}
         sx={{
           px: containerPx,
           ...(centered && {

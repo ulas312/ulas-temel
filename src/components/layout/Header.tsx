@@ -11,7 +11,7 @@ import Stack from '@mui/material/Stack';
 import MenuIcon from '@mui/icons-material/Menu';
 import { navLinks, siteMeta } from '../../content/siteContent';
 import { scrollToSection } from '../../utils/scrollToSection';
-import { containerPx } from '../../theme/theme';
+import { containerPx, layoutMaxWidth } from '../../theme/theme';
 
 export default function Header() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -40,7 +40,7 @@ export default function Header() {
         transition: 'background-color 0.2s ease, border-color 0.2s ease',
       }}
     >
-      <Container maxWidth="md" sx={{ px: containerPx }}>
+      <Container maxWidth={layoutMaxWidth} sx={{ px: containerPx }}>
         <Toolbar disableGutters sx={{ minHeight: { xs: 56, md: 72 }, gap: 2 }}>
           <Typography
             component="button"

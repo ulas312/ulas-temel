@@ -11,7 +11,7 @@ export default function OtherBuildsSection() {
         title="Other Builds & Experiments"
         subtitle="Product ideas and prototypes — direction and thinking, not full case studies."
       />
-      <Grid container spacing={3} sx={{ maxWidth: 960, mx: 'auto' }}>
+      <Grid container spacing={3} sx={{ width: '100%' }}>
         {otherProjects.map((project) => (
           <Grid item xs={12} sm={6} lg={4} key={project.name}>
             <ProjectCard project={project} />

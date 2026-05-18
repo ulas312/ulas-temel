@@ -8,12 +8,13 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { qa } from '../../content/siteContent';
 import Section from '../ui/Section';
 import SectionHeading from '../ui/SectionHeading';
+import { proseMaxWidth } from '../../theme/theme';
 
 export default function QASection() {
   return (
     <Section alt centered>
       <SectionHeading title={qa.title} subtitle={qa.copy} />
-      <Box sx={{ maxWidth: 560, mx: 'auto', textAlign: 'left' }}>
+      <Box sx={{ maxWidth: proseMaxWidth, width: '100%', mx: 'auto', textAlign: 'left' }}>
         <List disablePadding>
           {qa.highlights.map((item) => (
             <ListItem key={item} disableGutters sx={{ py: 0.75, alignItems: 'flex-start' }}>

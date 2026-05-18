@@ -1,5 +1,6 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { proseMaxWidth } from '../../theme/theme';
 
 interface SectionHeadingProps {
   title: string;
@@ -17,7 +18,8 @@ export default function SectionHeading({
       sx={{
         mb: { xs: 4, md: 6 },
         textAlign: align,
-        maxWidth: align === 'center' ? 640 : 'none',
+        maxWidth: align === 'center' ? proseMaxWidth : 'none',
+        width: '100%',
         mx: align === 'center' ? 'auto' : 0,
       }}
     >
@@ -29,7 +31,13 @@ export default function SectionHeading({
         {title}
       </Typography>
       {subtitle && (
-        <Typography variant="body1" sx={{ maxWidth: 520, mx: align === 'center' ? 'auto' : 0 }}>
+        <Typography
+          variant="body1"
+          sx={{
+            maxWidth: align === 'center' ? { xs: '100%', md: 520, lg: 680 } : 'none',
+            mx: align === 'center' ? 'auto' : 0,
+          }}
+        >
           {subtitle}
         </Typography>
       )}

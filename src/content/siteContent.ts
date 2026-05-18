@@ -110,15 +110,15 @@ export const winly = {
   ],
   status: 'live' as ProjectStatus,
   links: {
-    website: { label: 'Visit Winly website', href: '', isPlaceholder: true },
+    website: {
+      label: 'Visit Winly website',
+      href: 'https://www.getwinly.app/',
+    },
     chromeStore: {
       label: 'Chrome Web Store',
-      href: '',
-      isPlaceholder: true,
+      href: 'https://chromewebstore.google.com/detail/winly/ajnoijlogfdekdjhnnhdbfecepdmccfm?utm_source=item-share-cb',
     },
-    github: { label: 'GitHub', href: '', isPlaceholder: true },
   },
-  linksArePlaceholder: true,
 };
 
 export const otherProjects: OtherProject[] = [
